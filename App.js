@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-import productsReducer from './reducers/products';
+import productsReducer from './redux/reducers/products';
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -14,7 +14,9 @@ const store = createStore(rootReducer);
 export default function App() {
   return (
     <Provider store={store}>
-      <View>...</View>
+      <View>
+        <Text>...</Text>
+      </View>
     </Provider>
   );
 }
