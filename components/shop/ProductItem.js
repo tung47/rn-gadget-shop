@@ -6,30 +6,30 @@ import {
   StyleSheet,
   Button,
   TouchableOpacity,
-  Platform,
   TouchableNativeFeedback,
+  Platform,
 } from 'react-native';
 
 import Colors from '../../constants/Colors';
 
 const ProductItem = (props) => {
-  let TouchableComponent = TouchableOpacity;
+  let TouchableCmp = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
-    TouchableComponent = TouchableNativeFeedback;
+    TouchableCmp = TouchableNativeFeedback;
   }
 
   return (
     <View style={styles.product}>
       <View style={styles.touchable}>
-        <TouchableComponent onPress={props.onViewDetail} useForeground>
+        <TouchableCmp onPress={props.onViewDetail} useForeground>
           <View>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.details}>
               <Text style={styles.title}>{props.title}</Text>
-              <Text style={styles.price}>€{props.price.toFixed(2)}</Text>
+              <Text style={styles.price}>${props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.actions}>
               <Button
@@ -44,7 +44,7 @@ const ProductItem = (props) => {
               />
             </View>
           </View>
-        </TouchableComponent>
+        </TouchableCmp>
       </View>
     </View>
   );
@@ -83,10 +83,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
+    fontFamily: 'open-sans-bold',
     fontSize: 18,
-    marginVertical: 4,
+    marginVertical: 2,
   },
   price: {
+    fontFamily: 'open-sans',
     fontSize: 14,
     color: '#888',
   },
