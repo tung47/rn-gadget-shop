@@ -41,14 +41,16 @@ export default (state = initialState, action) => {
     case REMOVE_FROM_CART:
       const selectedCartItem = state.items[action.productId];
       const currentQty = selectedCartItem.quantity;
+
       let updatedCartItems;
+
       if (currentQty > 1) {
         // need to reduce quantity, not remove
         const updatedCartItem = new CartItem(
           selectedCartItem.quantity - 1,
           selectedCartItem.productPrice,
           selectedCartItem.productTitle,
-          selectedCartItem.sum - selectedCartItem.price
+          selectedCartItem.sum - selectedCartItem.productPrice
         );
         updatedCartItems = {
           ...state.items,
