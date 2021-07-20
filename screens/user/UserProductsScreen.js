@@ -6,7 +6,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import ProductItem from '../../components/shop/ProductItem';
 import CustomHeaderButton from '../../components/UI/HeaderButton';
 import Colors from '../../constants/Colors';
-import * as productActions from '../../redux/actions/products';
+import * as productsActions from '../../redux/actions/products';
 
 const UserProductsScreen = (props) => {
   const userProducts = useSelector((state) => state.products.userProducts);
@@ -30,17 +30,17 @@ const UserProductsScreen = (props) => {
           }}
         >
           <Button
-            color={Colors.accent}
+            color={Colors.primary}
             title='Edit'
             onPress={() => {
               editProductHandler(itemData.item.id);
             }}
           />
           <Button
-            color={Colors.accent}
+            color={Colors.primary}
             title='Delete'
             onPress={() => {
-              dispatch(productActions.deleteProduct(itemData.item.id));
+              dispatch(productsActions.deleteProduct(itemData.item.id));
             }}
           />
         </ProductItem>
@@ -52,7 +52,7 @@ const UserProductsScreen = (props) => {
 UserProductsScreen.navigationOptions = (navData) => {
   return {
     headerTitle: 'Your Products',
-    headerLeft: () => (
+    headerLeft: (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'
@@ -63,7 +63,7 @@ UserProductsScreen.navigationOptions = (navData) => {
         />
       </HeaderButtons>
     ),
-    headerRight: () => (
+    headerRight: (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Add'
