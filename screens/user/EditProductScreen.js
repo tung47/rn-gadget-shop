@@ -108,11 +108,11 @@ const EditProductScreen = (props) => {
   );
 
   return (
-    <KeyboardAvoidingView
-      style={styles.keyboard}
-      behavior='padding'
-      keyboardVerticalOffset={100}
-    >
+    // <KeyboardAvoidingView
+    //   style={styles.keyboard}
+    //   behavior='padding'
+    //   keyboardVerticalOffset={100}
+    // >
       <ScrollView>
         <View style={styles.form}>
           <Input
@@ -168,7 +168,7 @@ const EditProductScreen = (props) => {
           />
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    // </KeyboardAvoidingView>
   );
 };
 
@@ -194,7 +194,7 @@ EditProductScreen.navigationOptions = (navData) => {
 
 const styles = StyleSheet.create({
   keyboard: {
-    flex: 2,
+    flex: 1,
   },
   form: {
     margin: 20,
