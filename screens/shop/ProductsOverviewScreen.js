@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -23,7 +23,8 @@ const ProductsOverviewScreen = (props) => {
   const products = useSelector((state) => state.products.availableProducts);
   const dispatch = useDispatch();
 
-  const loadProducts = async () => {
+  const loadProducts = useCallback(async () => {
+    setError(null);
     setIsLoading(true);
     try {
       await dispatch(productsActions.fetchProducts());
@@ -31,7 +32,7 @@ const ProductsOverviewScreen = (props) => {
       setError(err.message);
     }
     setIsLoading(false);
-  };
+  }, [dispatch, setIsLoading, setError]);
 
   useEffect(() => {
     loadProducts();
@@ -48,7 +49,11 @@ const ProductsOverviewScreen = (props) => {
     return (
       <View style={styles.centered}>
         <Text>An error occurred!</Text>
-        <Button title="Try again" onPress={} />
+        <Button
+          title='Try again'
+          onPress={loadProducts}
+          color={Colors.accent}
+        />
       </View>
     );
   }
