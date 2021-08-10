@@ -31,7 +31,15 @@ const OrdersScreen = (props) => {
   if (isLoading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size='large' color={Colors.accent} />
+        <ActivityIndicator size='large' color={Colors.primary} />
+      </View>
+    );
+  }
+
+  if (orders.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text>No order found, let start shopping!</Text>
       </View>
     );
   }
