@@ -10,7 +10,7 @@ import productsReducer from './redux/reducers/products';
 import cartReducer from './redux/reducers/cart';
 import ordersReducer from './redux/reducers/orders';
 import authReducer from './redux/reducers/auth';
-import ShopNavigator from './navigation/ShopNavigator';
+import NavigationContainer from './navigation/NavigationContainer';
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -45,7 +45,7 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <ShopNavigator />
+      <NavigationContainer />
     </Provider>
   );
 }
