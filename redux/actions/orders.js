@@ -1,5 +1,7 @@
 import Order from '../../models/order';
 
+import { databaseURL } from '../../link';
+
 export const ADD_ORDER = 'ADD_ORDER';
 export const SET_ORDERS = 'SET_ORDERS';
 
@@ -7,9 +9,7 @@ export const fetchOrders = () => {
   return async (dispatch, getState) => {
     const userId = getState().auth.userId;
     try {
-      const response = await fetch(
-        `https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/orders/${userId}.json`
-      );
+      const response = await fetch(`${databaseURL}/orders/${userId}.json`);
 
       if (!response.ok) {
         throw new Error('Something went wrong!');
@@ -42,7 +42,7 @@ export const addOrder = (cartItems, totalAmount) => {
     const userId = getState().auth.userId;
     const date = new Date();
     const response = await fetch(
-      `https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/orders/${userId}.json?auth=${token}`,
+      `${databaseURL}/orders/${userId}.json?auth=${token}`,
       {
         method: 'POST',
         headers: {

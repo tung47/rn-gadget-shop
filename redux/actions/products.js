@@ -1,5 +1,7 @@
 import Product from '../../models/product';
 
+import { databaseURL } from '../../link';
+
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
@@ -10,7 +12,7 @@ export const fetchProducts = () => {
     const userId = getState().auth.userId;
     try {
       const response = await fetch(
-        'https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/products.json'
+        `${databaseURL}/products.json`
       );
 
       if (!response.ok) {
@@ -50,7 +52,7 @@ export const createProduct = (title, description, imageUrl, price) => {
     const token = getState().auth.token;
     const userId = getState().auth.userId;
     const response = await fetch(
-      `https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`,
+      `${databaseURL}/products.json?auth=${token}`,
       {
         method: 'POST',
         headers: {
@@ -86,7 +88,7 @@ export const updateProduct = (id, title, description, imageUrl) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     const response = await fetch(
-      `https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json?auth=${token}`,
+      `${databaseURL}/products/${id}.json?auth=${token}`,
       {
         method: 'PATCH',
         headers: {
@@ -116,7 +118,7 @@ export const deleteProduct = (productId) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     const response = await fetch(
-      `https://rn-gadget-shop-default-rtdb.europe-west1.firebasedatabase.app/products/${productId}.json?auth=${token}`,
+      `${databaseURL}/products/${productId}.json?auth=${token}`,
       {
         method: 'DELETE',
       }
