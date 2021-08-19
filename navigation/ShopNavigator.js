@@ -5,7 +5,9 @@ import { Platform, SafeAreaView, Button, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
-import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
+import ProductsOverviewScreen, {
+  screenOptions,
+} from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
@@ -31,29 +33,42 @@ const defaultNavigationOptions = {
 
 const ProductsStackNavigator = createStackNavigator();
 
-const ProductsNavigator = () => {
-  
-}
+export const ProductsNavigator = () => {
+  return (
+    <ProductsStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
+      <ProductsStackNavigator.Screen
+        name='ProductsOverview'
+        component={ProductsOverviewScreen}
+        options={screenOptions}
+      />
+      <ProductsStackNavigator.Screen
+        name='ProductDetail'
+        component={ProductDetailScreen}
+      />
+      <ProductsStackNavigator.Screen name='Cart' component={CartScreen} />
+    </ProductsStackNavigator.Navigator>
+  );
+};
 
-const ProductsNavigator = createStackNavigator(
-  {
-    ProductsOverview: ProductsOverviewScreen,
-    ProductDetail: ProductDetailScreen,
-    Cart: CartScreen,
-  },
-  {
-    navigationOptions: {
-      drawerIcon: (drawerConfig) => (
-        <Ionicons
-          name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-          size={23}
-          color={drawerConfig.tintColor}
-        />
-      ),
-    },
-    defaultNavigationOptions: defaultNavigationOptions,
-  }
-);
+// const ProductsNavigator = createStackNavigator(
+//   {
+//     ProductsOverview: ProductsOverviewScreen,
+//     ProductDetail: ProductDetailScreen,
+//     Cart: CartScreen,
+//   },
+//   {
+//     navigationOptions: {
+//       drawerIcon: (drawerConfig) => (
+//         <Ionicons
+//           name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+//           size={23}
+//           color={drawerConfig.tintColor}
+//         />
+//       ),
+//     },
+//     defaultNavigationOptions: defaultNavigationOptions,
+//   }
+// );
 
 const OrdersNavigator = createStackNavigator(
   {
