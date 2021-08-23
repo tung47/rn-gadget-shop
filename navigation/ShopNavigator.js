@@ -258,14 +258,24 @@ const ShopNavigator = () => {
 //   }
 // );
 
-const AuthNavigator = createStackNavigator(
-  {
-    Auth: AuthScreen,
-  },
-  {
-    defaultNavigationOptions: defaultNavigationOptions,
-  }
-);
+const AuthStackNavigator = createStackNavigator();
+
+export const AuthNavigator = () => {
+  return (
+    <AuthStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
+      <AuthStackNavigator.Screen name='Auth' component={AuthScreen} />
+    </AuthStackNavigator.Navigator>
+  );
+};
+
+// const AuthNavigator = createStackNavigator(
+//   {
+//     Auth: AuthScreen,
+//   },
+//   {
+//     defaultNavigationOptions: defaultNavigationOptions,
+//   }
+// );
 
 const MainNavigator = createSwitchNavigator({
   Startup: StartupScreen,
