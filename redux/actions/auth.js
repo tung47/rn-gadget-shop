@@ -4,6 +4,7 @@ import { apiURL, apiKey } from '../../link';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOGOUT = 'LOGOUT';
+export const SET_DID_TRY_AUTO_LOGIN = 'SET_DID_TRY_AUTO_LOGIN';
 
 let timer;
 
@@ -96,6 +97,10 @@ export const logout = () => {
   clearLogoutTimer();
   AsyncStorage.removeItem('userData');
   return { type: LOGOUT };
+};
+
+export const setDidTryAutoLogin = () => {
+  return { type: SET_DID_TRY_AUTO_LOGIN };
 };
 
 const clearLogoutTimer = () => {

@@ -24,7 +24,7 @@ import UserProductsScreen, {
 import EditProductScreen, {
   editProductScreenOptions,
 } from '../screens/user/EditProductScreen';
-import AuthScreen from '../screens/user/AuthScreen';
+import AuthScreen, { authScreenOptions } from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
 import Colors from '../constants/Colors';
 import * as authActions from '../redux/actions/auth';
@@ -158,7 +158,7 @@ export const AdminNavigator = () => {
 
 const ShopDrawerNavigator = createStackNavigator();
 
-const ShopNavigator = () => {
+export const ShopNavigator = () => {
   const dispatch = useDispatch();
 
   return (
@@ -263,7 +263,11 @@ const AuthStackNavigator = createStackNavigator();
 export const AuthNavigator = () => {
   return (
     <AuthStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
-      <AuthStackNavigator.Screen name='Auth' component={AuthScreen} />
+      <AuthStackNavigator.Screen
+        name='Auth'
+        component={AuthScreen}
+        options={authScreenOptions}
+      />
     </AuthStackNavigator.Navigator>
   );
 };
@@ -277,11 +281,13 @@ export const AuthNavigator = () => {
 //   }
 // );
 
-const MainNavigator = createSwitchNavigator({
-  Startup: StartupScreen,
-  Auth: AuthNavigator,
-  Shop: ShopNavigator,
-});
+
+
+// const MainNavigator = createSwitchNavigator({
+//   Startup: StartupScreen,
+//   Auth: AuthNavigator,
+//   Shop: ShopNavigator,
+// });
 
 const styles = StyleSheet.create({
   logoutView: {
@@ -290,4 +296,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createAppContainer(MainNavigator);
+// export default createAppContainer(MainNavigator);
