@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 
 import productsReducer from './redux/reducers/products';
 import cartReducer from './redux/reducers/cart';
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   auth: authReducer,
 });
 
-// const store = createStore(rootReducer, composeWithDevTools());
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
