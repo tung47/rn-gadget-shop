@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Platform,
   Alert,
-  KeyboardAvoidingView,
   ActivityIndicator,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -147,11 +146,6 @@ const EditProductScreen = (props) => {
   }
 
   return (
-    // <KeyboardAvoidingView
-    //   style={styles.keyboard}
-    //   behavior='padding'
-    //   keyboardVerticalOffset={100}
-    // >
     <ScrollView>
       <View style={styles.form}>
         <Input
@@ -207,7 +201,6 @@ const EditProductScreen = (props) => {
         />
       </View>
     </ScrollView>
-    // </KeyboardAvoidingView>
   );
 };
 
@@ -215,10 +208,7 @@ export const editProductScreenOptions = (navData) => {
   const routeParams = navData.route.params ? navData.route.params : {};
 
   return {
-    headerTitle: routeParams.productId
-      ? 'Edit Product'
-      : 'Add Product',
-    
+    headerTitle: routeParams.productId ? 'Edit Product' : 'Add Product',
   };
 };
 

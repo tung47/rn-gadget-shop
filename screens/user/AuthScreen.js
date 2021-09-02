@@ -2,7 +2,6 @@ import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import {
   ScrollView,
   View,
-  KeyboardAvoidingView,
   StyleSheet,
   Button,
   ActivityIndicator,
@@ -82,7 +81,6 @@ const AuthScreen = (props) => {
     setIsLoading(true);
     try {
       await dispatch(action);
-      // props.navigation.navigate('Shop');
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -102,11 +100,6 @@ const AuthScreen = (props) => {
   );
 
   return (
-    // <KeyboardAvoidingView
-    //   behavior='padding'
-    //   keyboardVerticalOffset={50}
-    //   style={styles.screen}
-    // >
     <LinearGradient colors={['#C98740', '#5A5854']} style={styles.gradient}>
       <Card style={styles.authContainer}>
         <ScrollView>
@@ -156,7 +149,6 @@ const AuthScreen = (props) => {
         </ScrollView>
       </Card>
     </LinearGradient>
-    // </KeyboardAvoidingView>
   );
 };
 
