@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
+import { LogBox } from 'react-native';
 
 import productsReducer from './redux/reducers/products';
 import cartReducer from './redux/reducers/cart';
@@ -28,6 +29,8 @@ const fetchFonts = () => {
 };
 
 export default function App() {
+  LogBox.ignoreLogs(['Setting a timer']);
+
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
